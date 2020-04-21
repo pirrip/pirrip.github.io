@@ -2,6 +2,8 @@
 layout: default
 title: Navigation Structure
 nav_order: 5
+has_children: true
+permalink: docs/usage
 ---
 
 # Navigation Structure
