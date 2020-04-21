@@ -2,67 +2,40 @@
 layout: default
 ---
 
-<div class="post-header">
-   <h1 class="post-title-main">{{ page.title }}</h1>
-</div>
+<div class="container">
+    <div class="row">
+        <main class="col-md-9 layout-page__main">
+            <section class="mobile-toc border mb-3 p-3 d-md-none">
+                <div class="d-flex align-items-center">
+                    <h2 class="mb-0">Table of Contents</h2>
 
-{% if page.simple_map == true %}
+                    <button
+                        class="js-only ml-2 toggle-toc"
+                        aria-controls="mobileTOC"
+                        aria-label="Toggle table of contents"
+                        aria-expanded="true"
+                    >
+                        <span aria-hidden="true" data-role="toggle">Hide</span>
+                    </button>
+                </div>
 
-<script>
-    $(document).ready ( function(){
-        $('.box{{page.box_number}}').addClass('active');
-    });
-</script>
+                {% include jekyll-docs-theme/toc.html
+                     class="js-toc.mb-0.mt-2"
+                     id="mobileTOC"
+                %}
+            </section>
 
-{% include custom/{{page.map_name}}.html %}
+            <section class="scope-markdown">
+                {% include jekyll-docs-theme/anchor_headings.html %}
+            </section>
+        </main>
 
-{% elsif page.complex_map == true %}
-
-<script>
-    $(document).ready ( function(){
-        $('.modalButton{{page.box_number}}').addClass('active');
-    });
-</script>
-
-{% include custom/{{page.map_name}}.html %}
-
-{% endif %}
-
-<div class="post-content">
-
-   {% if page.summary %}
-    <div class="summary">{{page.summary}}</div>
-   {% endif %}
-
-    {% unless page.toc == false %}
-    {% include toc.html %}
-    {% endunless %}
-
-
-    {% if site.github_editme_path %}
-
-    <a target="_blank" rel="noopener" href="https://github.com/{{site.github_editme_path}}{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    {% endif %}
-
-   {{content}}
-
-    <div class="tags">
-        {% if page.tags != null %}
-        <b>Tags: </b>
-        {% assign projectTags = site.data.tags.allowed-tags %}
-        {% for tag in page.tags %}
-        {% if projectTags contains tag %}
-        <a href="{{ "tag_" | append: tag | append: ".html" }}" class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
+        <aside class="col-md-3 layout-page__sidebar d-none d-md-block hidden-print">
+            {% include sidebar/content-pre.html %}
+            {% include sidebar/content.html %}
+            {% include sidebar/content-pre.html %}
+        </aside>
     </div>
 
-{% include commento.html %}
-
+    {% include disqus.html %}
 </div>
-
-{{site.data.alerts.hr_shaded}}
-
-{% include footer.html %}
