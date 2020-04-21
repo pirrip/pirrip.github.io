@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuration
+title: 설정
 nav_order: 1
 has_children: true
 permalink: docs/usage
