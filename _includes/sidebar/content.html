@@ -7,47 +7,47 @@
     <a class="px-3 text-muted" href="#top">
         <small>Back to top</small>
     </a>
-</nav>
-
-<nav class="navbar-collapse collapse" role="navigation" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-        {% assign sorted_pages = site.pages | sort: "title" %}
-        {% for p in sorted_pages %}
-            {% assign is_homepage = false %}
-            {% if p.homepage == true or p.isHome == true %}
-                {% assign is_homepage = true %}
-            {% endif %}
-
-            {% assign show_in_menu = true %}
-            {% if p.show_in_menu != nil and p.show_in_menu == false %}
-                {% assign show_in_menu = false %}
-            {% elsif p.hide != nil and p.hide == true %}
-                {% assign show_in_menu = false %}
-            {% endif %}
-
-            {% if is_homepage != true and show_in_menu == true and p.title %}
+    <nav class="" role="navigation" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            {% assign sorted_pages = site.pages | sort: "title" %}
+            {% for p in sorted_pages %}
+                {% assign is_homepage = false %}
+                {% if p.homepage == true or p.isHome == true %}
+                    {% assign is_homepage = true %}
+                {% endif %}
+    
+                {% assign show_in_menu = true %}
+                {% if p.show_in_menu != nil and p.show_in_menu == false %}
+                    {% assign show_in_menu = false %}
+                {% elsif p.hide != nil and p.hide == true %}
+                    {% assign show_in_menu = false %}
+                {% endif %}
+    
+                {% if is_homepage != true and show_in_menu == true and p.title %}
+                    <li class="nav-item {% if page.title == p.title %}active{% endif %}">
+                        <a
+                            class="nav-link"
+                            href="{{ p.url | relative_url }}"
+                        >
+                            {{ p.title }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% for p in site.links.header %}
                 <li class="nav-item {% if page.title == p.title %}active{% endif %}">
                     <a
                         class="nav-link"
-                        href="{{ p.url | relative_url }}"
+                        href="{{ p.url }}"
                     >
+                        {% include fa-icon.html icon=p.icon brand=p.brand %}
                         {{ p.title }}
                     </a>
                 </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-    <ul class="navbar-nav ml-auto">
-        {% for p in site.links.header %}
-            <li class="nav-item {% if page.title == p.title %}active{% endif %}">
-                <a
-                    class="nav-link"
-                    href="{{ p.url }}"
-                >
-                    {% include fa-icon.html icon=p.icon brand=p.brand %}
-                    {{ p.title }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </nav>
 </nav>
+
