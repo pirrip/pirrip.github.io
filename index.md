@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: '홈'
 nav_order: 1
 description: "시작"
 permalink: /

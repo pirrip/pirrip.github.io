@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Jekyll getting started
-nav_order: 1
+title: '시작하기'
+nav_order: 2
 ---
 
 ## 지킬 설치
