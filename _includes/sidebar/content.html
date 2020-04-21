@@ -4,10 +4,7 @@
          anchor_class="nav-link.px-3.py-1"
     %}
 
-    <a class="px-3 text-muted" href="#top">
-        <small>Back to top</small>
-    </a>
-    <div class="">
+    <div class="border border-success">
         <ul class="navbar-nav">
             {% assign sorted_pages = site.pages | sort: "title" %}
             {% for p in sorted_pages %}
@@ -29,7 +26,7 @@
                             class="nav-link"
                             href="{{ p.url | relative_url }}"
                         >
-                            {{ p.title }}
+                            {{ p }}
                         </a>
                     </li>
                 {% endif %}
