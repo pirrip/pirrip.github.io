@@ -1,11 +1,6 @@
 # name of the software
 name: RepeTentiA
 
-project:
-  version: 1.0.0-beta.4
-  download_url: https://github.com/allejo/jekyll-docs-theme/releases
-  download_text: Download
-
 license:
   software: MIT License
   software_url: https://opensource.org/licenses/MIT
