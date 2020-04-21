@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Front Matter
+disable_anchors: true
 description: ~
 ---
 
