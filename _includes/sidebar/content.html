@@ -20,13 +20,13 @@
                     {% assign show_in_menu = false %}
                 {% endif %}
     
-                {% if is_homepage != true and show_in_menu == true and p.title %}
+                {% if is_homepage != true and show_in_menu == true and p.title and p.dir == page.dir%}
                     <li class="nav-item {% if page.title == p.title %}active{% endif %}">
                         <a
                             class="nav-link"
                             href="{{ p.url | relative_url }}"
                         >
-                            {{ p }}
+                            {{ p.title }}
                         </a>
                     </li>
                 {% endif %}
