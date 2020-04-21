@@ -1,4 +1,4 @@
-<nav id="page-toc" class="page-sidebar">
+<div class="page-sidebar">
     <div class="border">
         <ul class="navbar-nav">
             {% assign sorted_pages = site.pages | sort: "title" %}
@@ -7,14 +7,14 @@
                 {% if p.homepage == true or p.isHome == true %}
                     {% assign is_homepage = true %}
                 {% endif %}
-    
+
                 {% assign show_in_menu = true %}
                 {% if p.show_in_menu != nil and p.show_in_menu == false %}
                     {% assign show_in_menu = false %}
                 {% elsif p.hide != nil and p.hide == true %}
                     {% assign show_in_menu = false %}
                 {% endif %}
-    
+
                 {% if is_homepage != true and show_in_menu == true and p.title and p.dir == page.dir%}
                     <li class="nav-item {% if page.title == p.title %}active{% endif %}">
                         <a
@@ -28,8 +28,10 @@
             {% endfor %}
         </ul>
     </div>
-    {% include jekyll-docs-theme/toc.html
-        class="list-unstyled.pl-0"
-        anchor_class="nav-link.px-3.py-1" %}
-</nav>
 
+    <nav id="page-toc">
+        {% include jekyll-docs-theme/toc.html
+            class="list-unstyled.pl-0"
+            anchor_class="nav-link.px-3.py-1" %}
+    </nav>
+</div>
